@@ -4,10 +4,12 @@ const { MongoClient } = require('mongodb');
 
 const app = express();
 app.use(express.json());
-app.use(express.static('public'));
 
-// La tua stringa di connessione a MongoDB Cloud
-const uri = "mongodb+srv://mmarrocco_db_user:SG1TbNa3t49Tk1Kd@cluster0.xfuf02g.mongodb.net/GestioneFlotta?retryWrites=true&w=majority";
+// FIX 1: Aiutiamo il cloud a trovare la cartella con la grafica
+app.use(express.static(path.join(__dirname, 'public')));
+
+// FIX 2: Prendiamo la password dalla cassaforte segreta di Render invece di scriverla qui!
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 let veicoliColl, utentiColl, prenotazioniColl;
