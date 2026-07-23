@@ -411,3 +411,10 @@ async function eliminaPrenotazioneCorrente() {
     chiudiModal(); caricaTuttoHome(); if(mezzoSelezionatoId) caricaTuttoPerPrenotazioni();
   }
 }
+// Funzione per aprire/chiudere il menu a tendina su smartphone
+function toggleMenu() {
+    const navUl = document.querySelector('.nav-links');
+    if (navUl) {
+        navUl.classList.toggle('menu-aperto');
+    }
+}
