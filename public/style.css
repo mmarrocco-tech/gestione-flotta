@@ -531,3 +531,37 @@ th {
   margin-bottom: 10px;
   border: 1px solid #444;
 }
+/* --- ADATTAMENTO SMARTPHONE --- */
+@media (max-width: 768px) {
+
+    /* 1. Riduciamo i titoli giganti */
+    header h1, h2, .page-title {
+        font-size: 1.5rem !important;
+        text-align: center !important;
+    }
+
+    /* 2. Impiliamo il menu di navigazione in verticale */
+    nav ul {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 10px 0 !important;
+    }
+
+    /* 3. FORZIAMO IL LAYOUT IN VERTICALE (niente più scorrimento orizzontale) */
+    main, .container, .content-wrapper, .dashboard {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 5px !important;
+    }
+
+    /* 4. Facciamo occupare il 100% della larghezza a tutte le sezioni e alle card */
+    section, .section-box, .card, #ul-mezzi li {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-right: 0 !important;
+        margin-bottom: 15px !important;
+    }
+}
