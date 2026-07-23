@@ -1,0 +1,533 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;800&display=swap");
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #141414;
+  color: #f8f8f8;
+  margin: 0;
+}
+
+.navbar {
+  background-color: #303030;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #f3cb12;
+  margin-bottom: 30px;
+}
+
+.logo {
+  color: #f8f8f8;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #c1c1c1;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f3cb12;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1,
+h3 {
+  color: #f3cb12;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-container,
+.table-container {
+  background: #303030;
+  padding: 25px;
+  border-radius: 4px;
+  border-top: 4px solid #f3cb12;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+input,
+select {
+  background-color: #141414;
+  color: #f8f8f8;
+  border: 1px solid #898989;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: "Nunito Sans", sans-serif;
+  flex: 1;
+  min-width: 180px;
+  font-size: 15px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 1px solid #f3cb12;
+}
+
+button[type="submit"] {
+  background-color: #f3cb12;
+  color: #141414;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #f8f8f8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+th,
+td {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid #898989;
+}
+th {
+  color: #c1c1c1;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.btn-elimina {
+  background-color: transparent;
+  color: #fa640a;
+  border: 1px solid #fa640a;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.btn-elimina:hover {
+  background-color: #fa640a;
+  color: #f8f8f8;
+}
+
+.btn-modifica {
+  background-color: transparent;
+  color: #5a96f0;
+  border: 1px solid #5a96f0;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  margin-right: 5px;
+}
+.btn-modifica:hover {
+  background-color: #5a96f0;
+  color: #141414;
+}
+
+.btn-obsoleto {
+  background-color: transparent;
+  color: #898989;
+  border: 1px solid #898989;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.btn-obsoleto:hover {
+  background-color: #898989;
+  color: #141414;
+}
+
+.badge-attivo {
+  color: #00a466;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.badge-obsoleto {
+  color: #fa640a;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.nascosto {
+  display: none !important;
+}
+
+/* LAYOUT GENERALI */
+.prenotazione-layout {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.colonna-mezzi {
+  width: 280px;
+  flex-shrink: 0;
+  background: #303030;
+  padding: 20px;
+  border-radius: 4px;
+  border-top: 4px solid #f3cb12;
+}
+
+.colonna-calendario {
+  flex-grow: 1;
+  background: #303030;
+  padding: 25px;
+  border-radius: 4px;
+  border-top: 4px solid #5a96f0;
+  overflow: hidden;
+}
+
+/* LISTA MEZZI (SCHEDA PRENOTAZIONE) - REINSERITA! */
+.lista-mezzi {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.lista-mezzi li {
+  padding: 14px;
+  border-bottom: 1px solid #898989;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 800;
+}
+.lista-mezzi li:hover,
+.lista-mezzi li.selezionato {
+  background: #141414;
+  color: #f3cb12;
+  border-left: 4px solid #f3cb12;
+}
+
+/* LISTA STATO MEZZI HOME */
+.lista-mezzi-stato {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card-mezzo-stato {
+  background: #141414;
+  border: 1px solid #898989;
+  padding: 12px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.card-mezzo-titolo {
+  font-weight: 800;
+  font-size: 14px;
+  color: #f8f8f8;
+}
+.card-mezzo-stato-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 3px;
+  width: fit-content;
+  text-transform: uppercase;
+}
+.stato-libero {
+  background: rgba(0, 164, 102, 0.2);
+  color: #00a466;
+  border: 1px solid #00a466;
+}
+.stato-occupato {
+  background: rgba(250, 100, 10, 0.2);
+  color: #fa640a;
+  border: 1px solid #fa640a;
+}
+.card-mezzo-dettaglio {
+  font-size: 11px;
+  color: #c1c1c1;
+}
+.btn-prenota-rapido {
+  background: #f3cb12;
+  color: #141414;
+  border: none;
+  font-weight: 800;
+  font-size: 11px;
+  padding: 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 4px;
+  text-transform: uppercase;
+  transition: background-color 0.2s;
+}
+.btn-prenota-rapido:hover {
+  background: #f8f8f8;
+}
+
+/* CALENDARIO */
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.calendario-header button {
+  background: #141414;
+  color: #f8f8f8;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid #898989;
+  cursor: pointer;
+}
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.giorno-header {
+  text-align: center;
+  color: #c1c1c1;
+  font-size: 14px;
+  font-weight: 800;
+  padding-bottom: 10px;
+}
+
+.giorno {
+  background: #141414;
+  border: 1px solid #898989;
+  min-height: 130px;
+  padding: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.giorno:hover {
+  border-color: #f3cb12;
+}
+.giorno.vuoto {
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+.badge-prenotazione {
+  color: #141414;
+  font-size: 11px;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.badge-prenotazione:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+.badge-nome {
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge-orari {
+  font-size: 10px;
+  font-weight: 800;
+  opacity: 0.85;
+}
+
+/* POPUP MODALE */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-box {
+  position: relative;
+  background: #303030;
+  padding: 30px;
+  border-radius: 6px;
+  border-top: 5px solid #f3cb12;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.modal-box label {
+  display: block;
+  margin-top: 10px;
+  color: #c1c1c1;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.modal-box input,
+.modal-box select {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+  justify-content: flex-end;
+}
+
+.btn-chiudi-modal {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #898989;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.btn-chiudi-modal:hover {
+  color: #f3cb12;
+}
+/* EVIDENZA GIORNO ODIERNO (STILE GOOGLE CALENDAR) */
+.numero-giorno {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+.numero-giorno.oggi {
+  background-color: #5A96F0; /* Cornflower Blue PROLIGHTS */
+  color: #141414;
+}
+/* --- SCHERMATA LOGIN --- */
+.login-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #141414;
+  display: flex; justify-content: center; align-items: center;
+  z-index: 9999;
+}
+.login-box {
+  background: #303030;
+  padding: 40px;
+  border-radius: 6px;
+  border-top: 5px solid #F3CB12;
+  width: 100%; max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.login-box input { width: 100%; box-sizing: border-box; }
+.login-box button { width: 100%; font-size: 16px; padding: 14px; }
+/* --- TASTI E BADGE GUASTO --- */
+.badge-guasto {
+  background-color: #F44336;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.btn-guasto {
+  background-color: transparent;
+  border: 1px solid #F44336;
+  color: #F44336;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin: 0 4px;
+}
+
+.btn-guasto:hover {
+  background-color: #F44336;
+  color: white;
+}
+
+.btn-ripara {
+  background-color: transparent;
+  border: 1px solid #4CAF50;
+  color: #4CAF50;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  margin: 0 4px;
+}
+
+.btn-ripara:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+/* --- FOTO MEZZI --- */
+.card-mezzo-foto {
+  width: 100%;
+  height: 120px;
+  object-fit: cover; /* Taglia l'immagine in modo perfetto senza deformarla */
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #444;
+}

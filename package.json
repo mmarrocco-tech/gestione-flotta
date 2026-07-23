@@ -1,0 +1,13 @@
+{
+  "name": "flotta-aziendale",
+  "version": "1.0.0",
+  "description": "Gestione Flotta",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2",
+    "mongodb": "^7.5.0"
+  }
+}
