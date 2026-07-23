@@ -82,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
       marca: document.getElementById("marca").value, 
       modello: document.getElementById("modello").value, 
       targa: document.getElementById("targa").value.toUpperCase(),
-      foto: document.getElementById("foto").value // LEGGE LA FOTO
     };
     await fetch(id ? `/api/veicoli/${id}` : "/api/veicoli", { method: id ? "PUT" : "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
     annullaModifica(); caricaVeicoli();
@@ -184,7 +183,6 @@ function preparaModifica(id) {
     document.getElementById("marca").value = v.marca; 
     document.getElementById("modello").value = v.modello; 
     document.getElementById("targa").value = v.targa; 
-    document.getElementById("foto").value = v.foto || ""; // CARICA LA FOTO SE ESISTE
     document.getElementById("btnAnnullaMezzo").classList.remove("nascosto"); 
   } 
 }
@@ -219,11 +217,8 @@ function disegnaStatoMezziHome() {
   mezziAttivi.forEach(v => {
     const li = document.createElement("li"); li.className = "card-mezzo-stato";
     
-    // HTML DELL'IMMAGINE: se c'è la inserisce, altrimenti lascia vuoto
-    const htmlFoto = v.foto ? `<img src="${v.foto}" class="card-mezzo-foto" alt="${v.marca}">` : '';
-
     if (v.guasto) {
-      li.innerHTML = `${htmlFoto}<div class="card-mezzo-titolo">${v.marca} ${v.modello} - ${v.targa}</div><span class="card-mezzo-stato-badge badge-guasto">GUASTO</span><div class="card-mezzo-dettaglio" style="color:#F44336; font-weight:bold;">In Manutenzione</div>`;
+      li.innerHTML = `<div class="card-mezzo-titolo">${v.marca} ${v.modello} - ${v.targa}</div><span class="card-mezzo-stato-badge badge-guasto">GUASTO</span><div class="card-mezzo-dettaglio" style="color:#F44336; font-weight:bold;">In Manutenzione</div>`;
       ul.appendChild(li);
       return;
     }
@@ -235,9 +230,9 @@ function disegnaStatoMezziHome() {
     
     if (occupatoOra) {
       const u = utentiGlobali.find(x => x.id == occupatoOra.utenteId);
-      li.innerHTML = `${htmlFoto}<div class="card-mezzo-titolo">${v.marca} ${v.modello} - ${v.targa}</div><span class="card-mezzo-stato-badge stato-occupato">IN USO</span><div class="card-mezzo-dettaglio">Guidata da: <strong>${u ? u.nome+" "+u.cognome : "Autista"}</strong><br>Fino al: ${occupatoOra.fine.replace("T", " ")}</div>`;
+      li.innerHTML = `<div class="card-mezzo-titolo">${v.marca} ${v.modello} - ${v.targa}</div><span class="card-mezzo-stato-badge stato-occupato">IN USO</span><div class="card-mezzo-dettaglio">Guidata da: <strong>${u ? u.nome+" "+u.cognome : "Autista"}</strong><br>Fino al: ${occupatoOra.fine.replace("T", " ")}</div>`;
     } else {
-      li.innerHTML = `${htmlFoto}<div class="card-mezzo-titolo">${v.marca} ${v.modello} - ${v.targa}</div><span class="card-mezzo-stato-badge stato-libero">DISPONIBILE</span><button class="btn-prenota-rapido" onclick="apriModalDaHome(${v.id}, '${dataOggiStr}T09:00')">+ PRENOTA MEZZO</button>`;
+      li.innerHTML = `<div class="card-mezzo-titolo">${v.marca} ${v.modello} - ${v.targa}</div><span class="card-mezzo-stato-badge stato-libero">DISPONIBILE</span><button class="btn-prenota-rapido" onclick="apriModalDaHome(${v.id}, '${dataOggiStr}T09:00')">+ PRENOTA MEZZO</button>`;
     }
     ul.appendChild(li);
   });
