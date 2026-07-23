@@ -565,3 +565,62 @@ th {
         margin-bottom: 15px !important;
     }
 }
+/* --- MENU HAMBURGER (Regola per PC: Tasto Nascosto) --- */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffc107; /* Colore giallo */
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+/* --- VISTA SMARTPHONE (Schermi fino a 800px) --- */
+@media screen and (max-width: 800px) {
+    /* 1. Mostriamo il pulsante Hamburger */
+    .hamburger-btn {
+        display: block !important;
+    }
+
+    /* Affianchiamo il Logo e il tasto Hamburger nella barra */
+    .navbar {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    /* 2. Nascondiamo il menu a voci e lo facciamo diventare a tendina */
+    .nav-links {
+        display: none !important; /* Nascosto di default */
+        flex-direction: column !important;
+        width: 100% !important;
+        background-color: #2a2a2a !important; /* Sfondo scuro per il menu a tendina */
+        margin: 0 !important;
+        padding: 10px 0 !important;
+    }
+
+    /* Questa è la classe che si attiva quando clicchi il tasto */
+    .nav-links.menu-aperto {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        text-align: center !important;
+        margin: 10px 0 !important;
+    }
+
+    /* 3. RISOLVIAMO LE DUE COLONNE (Mezzi sopra, Calendario sotto) */
+    .prenotazione-layout {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .colonna-mezzi, .colonna-calendario {
+        width: 100% !important;
+        margin: 0 0 20px 0 !important; 
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
